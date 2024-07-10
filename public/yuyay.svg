@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 630.9 165.7">
+  <defs>
+    <style>
+      .cls-1 {
+        stroke-width: 0px;
+      }
+
+      .cls-1, .cls-2 {
+        fill: none;
+      }
+
+      .cls-3 {
+        fill: #000;
+        fill-rule: evenodd;
+        stroke-width: .7px;
+      }
+
+      .cls-3, .cls-2 {
+        stroke: #000;
+        stroke-linecap: round;
+      }
+
+      .cls-2 {
+        stroke-linejoin: round;
+        stroke-width: 12.1px;
+      }
+    </style>
+  </defs>
+  <g id="Capa_2" data-name="Capa 2">
+    <path class="cls-3" d="M329,165.7h-41.4l52.5-139.8h41.5l-52.6,139.8ZM578.2,165.7h-41.4l52.5-139.8h41.5l-52.6,139.8ZM87.2,129.6h-43.3v-41.2L0,0h42.4l44.8,91.4v38.2ZM188.4,129.6h-23.9l-26-25.9V25.9h43.2v77.8h19.2v12.9l-12.5,13ZM250.9,129.6h-43.2V25.9h43.2v103.7ZM317.3,68.1l-19.3,52.8-38.3-95h43.1l14.6,42.2ZM566.5,68.1l-19.3,52.8-38.3-95h43.1l14.6,42.2ZM131.7,0l-41.8,82.3-21-42.6L90.2,0h41.5Z" vector-effect="non-scaling-stroke"/>
+  </g>
+  <g id="Capa_1" data-name="Capa 1">
+    <g>
+      <path class="cls-1" d="M373.1,0h145.7v145.7h-145.7V0Z"/>
+      <path class="cls-2" d="M467.2,78.9c-11.7,0-21.3,9.5-21.3,21.3v6.1c0,11.7,9.5,21.3,21.3,21.3s21.3-9.5,21.3-21.3v-10.9"/>
+      <path class="cls-2" d="M424.7,78.9c11.7,0,21.3,9.5,21.3,21.3v6.1c0,11.7-9.5,21.3-21.3,21.3s-21.3-9.5-21.3-21.3v-10.9"/>
+      <path class="cls-2" d="M479.4,97.1c11.7,0,21.3-9.5,21.3-21.3s-9.5-21.3-21.3-21.3h-3"/>
+      <path class="cls-2" d="M488.5,56.5v-17c0-11.7-9.5-21.3-21.3-21.3s-21.3,9.5-21.3,21.3"/>
+      <path class="cls-2" d="M412.6,97.1c-11.7,0-21.3-9.5-21.3-21.3s9.5-21.3,21.3-21.3h3"/>
+      <path class="cls-2" d="M403.5,56.5v-17c0-11.7,9.5-21.3,21.3-21.3s21.3,9.5,21.3,21.3v60.7"/>
+    </g>
+  </g>
+</svg>
