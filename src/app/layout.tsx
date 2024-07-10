@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 import { Rubik } from 'next/font/google'
 
+import Header from './ui/header'
+
 import './globals.css'
 
 const inter = Rubik({ subsets: ['latin'] })
@@ -17,7 +19,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <Header />
+        {children}
+      </body>
     </html>
   )
 }
