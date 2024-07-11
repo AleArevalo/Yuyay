@@ -34,7 +34,7 @@ export default function Home() {
         </div>
       </main>
 
-      <section className="bg-indigo-600 py-16">
+      <section id="project" className="bg-indigo-600 py-16">
         <div className="container mx-auto px-6">
           <h2 className="text-2xl text-white font-bold text-center">Características</h2>
           <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-8">
