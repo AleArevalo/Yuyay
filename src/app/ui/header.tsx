@@ -4,7 +4,7 @@ export default function Header () {
   return (
     <header className="container mx-auto grid md:flex justify-center items-center gap-4 md:gap-16 py-8">
       <nav className="hidden md:block">
-        <ul className="flex gap-8">
+        <ul className="flex gap-12">
           <li>
             <a href="#" className="hover:text-gray-400 font-medium border-b-2">Home</a>
           </li>
@@ -19,7 +19,7 @@ export default function Header () {
       </div>
 
       <nav className="hidden md:block">
-        <ul className="flex gap-8">
+        <ul className="flex gap-12">
           <li>
             <a href="#" className="text-indigo-600 hover:text-gray-400 font-medium">Preview</a>
           </li>
