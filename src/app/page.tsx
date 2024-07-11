@@ -4,8 +4,9 @@ import { VoiceAssistant, UndrawThoughtProcess, UndrawSoftware, UndrawProudSelf, 
 export default function Home() {
   return (
     <>
-      <main className="container mx-auto px-6 py-16 text-center">
-        <div className="grid grid-flow-col justify-between">
+      <main className="container mx-auto px-6 pb-16 md:py-16 text-center">
+        <div className="grid md:grid-flow-col justify-between">
+          <UndrawThoughtProcess classList="m-auto md:hidden" width={300} height={250} />
           <div>
             <h1 className="text-4xl font-bold text-gray-400">Welcome to Yuyay</h1>
             <p className="my-4 text-gray-100">
@@ -29,7 +30,7 @@ export default function Home() {
               <a href="#" className="px-4 py-2 bg-gray-200 text-gray-800 rounded-full ml-4 hover:bg-gray-300">Empezar</a>
             </div>
           </div>
-          <UndrawThoughtProcess width={750} height={350} />
+          <UndrawThoughtProcess classList="hidden md:block" width={750} height={350} />
         </div>
       </main>
 

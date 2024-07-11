@@ -1,8 +1,8 @@
 import Image from 'next/image'
 
-export default function Header () {
+export default function Header() {
   return (
-    <header className="container mx-auto grid md:flex justify-center items-center gap-4 md:gap-16 py-8">
+    <header className="container mx-auto grid md:flex justify-items-center md:justify-center items-center gap-4 md:gap-16 py-8">
       <nav className="hidden md:block">
         <ul className="flex gap-12">
           <li>
@@ -32,16 +32,16 @@ export default function Header () {
       <nav className="md:hidden">
         <ul className="flex gap-8">
           <li>
-            <a href="#" className="hover:text-gray-400">Home</a>
+            <a href="#" className="hover:text-gray-400 font-medium">Home</a>
           </li>
           <li>
-            <a href="#" className="hover:text-gray-400">Project</a>
+            <a href="#" className="text-indigo-600 hover:text-gray-400 font-medium">Project</a>
           </li>
           <li>
-            <a href="#" className="hover:text-gray-400">Preview</a>
+            <a href="#" className="hover:text-gray-400 font-medium">Preview</a>
           </li>
           <li>
-            <a href="#" className="hover:text-gray-400">Config</a>
+            <a href="#" className="text-indigo-600 hover:text-gray-400 font-medium">Config</a>
           </li>
         </ul>
       </nav>

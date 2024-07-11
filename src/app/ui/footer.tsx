@@ -1,9 +1,7 @@
-import Image from 'next/image'
-
 export default function Footer() {
   return (
     <footer className="py-8">
-        <div className="container mx-auto px-6 w-1/2">
+        <div className="container mx-auto px-6 md:w-1/2">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="text-center">
                     <h3 className="text-indigo-600 text-xl font-bold">Yuyay</h3>
