@@ -6,10 +6,10 @@ export default function Header () {
       <nav className="hidden md:block">
         <ul className="flex gap-8">
           <li>
-            <a href="#" className="hover:text-gray-400">Home</a>
+            <a href="#" className="hover:text-gray-400 font-medium border-b-2">Home</a>
           </li>
           <li>
-            <a href="#" className="hover:text-gray-400">Project</a>
+            <a href="#" className="text-indigo-600 hover:text-gray-400 font-medium">Project</a>
           </li>
         </ul>
       </nav>
@@ -21,10 +21,10 @@ export default function Header () {
       <nav className="hidden md:block">
         <ul className="flex gap-8">
           <li>
-            <a href="#" className="hover:text-gray-400">Preview</a>
+            <a href="#" className="text-indigo-600 hover:text-gray-400 font-medium">Preview</a>
           </li>
           <li>
-            <a href="#" className="hover:text-gray-400">Config</a>
+            <a href="#" className="hover:text-gray-400 font-medium">Config</a>
           </li>
         </ul>
       </nav>
