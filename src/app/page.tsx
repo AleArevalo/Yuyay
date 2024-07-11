@@ -35,7 +35,7 @@ export default function Home() {
 
       <section className="bg-indigo-600 py-16">
         <div className="container mx-auto px-6">
-          <h2 className="text-2xl font-bold text-gray-900 text-center">Características</h2>
+          <h2 className="text-2xl font-bold text-center">Características</h2>
           <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="bg-gray-100 p-8 rounded-3xl shadow-md text-center">
               <h3 className="text-xl font-bold text-indigo-600">Transcripción de voz</h3>
