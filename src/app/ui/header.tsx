@@ -10,7 +10,7 @@ export default function Header() {
             <Link href="/#home" className="hover:text-gray-400 font-medium border-b-2 border-black dark:border-gray-400">Home</Link>
           </li>
           <li>
-            <Link href="#project" className="text-indigo-600 hover:text-gray-400 font-medium">Project</Link>
+            <Link href="/#project" className="text-indigo-600 hover:text-gray-400 font-medium">Project</Link>
           </li>
         </ul>
       </nav>
@@ -22,7 +22,7 @@ export default function Header() {
       <nav className="hidden md:block">
         <ul className="flex gap-12">
           <li>
-            <Link href="#" className="text-indigo-600 hover:text-gray-400 font-medium">Preview</Link>
+            <Link href="/preview" className="text-indigo-600 hover:text-gray-400 font-medium">Preview</Link>
           </li>
           <li>
             <Link href="#" className="hover:text-gray-400 font-medium">Config</Link>
@@ -36,10 +36,10 @@ export default function Header() {
             <Link href="/#home" className="hover:text-gray-400 font-medium border-b-2 border-black dark:border-gray-400">Home</Link>
           </li>
           <li>
-            <Link href="#project" className="text-indigo-600 hover:text-gray-400 font-medium">Project</Link>
+            <Link href="/#project" className="text-indigo-600 hover:text-gray-400 font-medium">Project</Link>
           </li>
           <li>
-            <Link href="#" className="hover:text-gray-400 font-medium">Preview</Link>
+            <Link href="/preview" className="hover:text-gray-400 font-medium">Preview</Link>
           </li>
           <li>
             <Link href="#" className="text-indigo-600 hover:text-gray-400 font-medium">Config</Link>
