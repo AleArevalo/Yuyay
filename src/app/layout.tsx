@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Rubik } from 'next/font/google'
 
 import Header from './ui/header'
+import Footer from './ui/footer'
 
 import './globals.css'
 
@@ -22,6 +23,7 @@ export default function RootLayout({
       <body className={`${inter.className} min-h-screen`}>
         <Header />
         {children}
+        <Footer />
       </body>
     </html>
   )
