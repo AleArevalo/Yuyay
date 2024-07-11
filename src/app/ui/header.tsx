@@ -25,7 +25,7 @@ export default function Header() {
             <Link href="/preview" className="text-indigo-600 hover:text-gray-400 font-medium">Preview</Link>
           </li>
           <li>
-            <Link href="#" className="hover:text-gray-400 font-medium">Config</Link>
+            <Link href="/config" className="hover:text-gray-400 font-medium">Config</Link>
           </li>
         </ul>
       </nav>
@@ -42,7 +42,7 @@ export default function Header() {
             <Link href="/preview" className="hover:text-gray-400 font-medium">Preview</Link>
           </li>
           <li>
-            <Link href="#" className="text-indigo-600 hover:text-gray-400 font-medium">Config</Link>
+            <Link href="/config" className="text-indigo-600 hover:text-gray-400 font-medium">Config</Link>
           </li>
         </ul>
       </nav>
