@@ -8,7 +8,7 @@ export default function Footer() {
                 <div className="text-center">
                     <h3 className="text-indigo-600 text-xl font-bold">Yuyay</h3>
                     <p className="mt-4">
-                        Yuyay significa "recordar" en quechua (familia lingüística originaria de sur America) y fue creada para participar de la Hackathon de Vercel AI con el gran @midudev.
+                        Yuyay significa &quot;recordar&quot; en quechua (familia lingüística originaria de sur America) y fue creada para participar de la Hackathon de Vercel AI con el gran @midudev.
                     </p>
                 </div>
                 <div className="text-center">
