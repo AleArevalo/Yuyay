@@ -13,7 +13,7 @@ export default function Home() {
               La forma más moderna de organizar tus pensamientos con mapas mentales segmentados con IA.
             </p>
             <div className="flex justify-center ">
-              <div className="relative w-4/6">
+              <div className="relative w-4/5 md:w-4/6">
                 <input
                   type="text"
                   placeholder="Buscar en la mente de Yuyay..."
