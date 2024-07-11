@@ -30,7 +30,7 @@ export default function Home() {
               <a href="#" className="px-4 py-2 bg-black dark:bg-gray-200 text-white dark:text-gray-800 hover:bg-gray-800 dark:hover:bg-gray-300 rounded-full ml-4">Empezar</a>
             </div>
           </div>
-          <UndrawThoughtProcess classList="hidden md:block" width={750} height={350} />
+          <UndrawThoughtProcess classList="hidden md:block w-[750px] h-[350px]" />
         </div>
       </main>
 
@@ -40,17 +40,17 @@ export default function Home() {
           <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="bg-gray-100 p-8 rounded-3xl shadow-md text-center">
               <h3 className="text-xl font-bold text-indigo-600">Transcripción de voz</h3>
-              <VoiceAssistant width={325} height={250} />
+              <VoiceAssistant classList="w-full h-auto max-h-[250px]" />
               <p className="mt-4 text-gray-600">Habla como una nota de voz y la AI la guardará como una memoria</p>
             </div>
             <div className="bg-gray-100 p-8 rounded-3xl shadow-md text-center">
               <h3 className="text-xl font-bold text-indigo-600">Mapa mental inteligente</h3>
-              <UndrawSoftware width={325} height={250} />
+              <UndrawSoftware classList="w-full h-auto max-h-[250px]" />
               <p className="mt-4 text-gray-600">Las memorias serán presentadas como mapas dinámicos e interactivos</p>
             </div>
             <div className="bg-gray-100 p-8 rounded-3xl shadow-md text-center">
               <h3 className="text-xl font-bold text-indigo-600">Memoria segmentada</h3>
-              <UndrawProudSelf width={325} height={250} />
+              <UndrawProudSelf classList="w-full h-auto max-h-[250px]" />
               <p className="mt-4 text-gray-600">Búsqueda rápida y precisa con resumen o como nota de voz</p>
             </div>
           </div>
