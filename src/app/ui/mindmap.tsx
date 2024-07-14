@@ -1,10 +1,11 @@
 'use client'
 
-import { useRef, useEffect, FC } from 'react'
+import { useRef, useEffect, FC, useState } from 'react'
 import * as d3 from 'd3'
 
 interface Node {
     id: string;
+    info: string;
 }
 
 interface Link {
@@ -19,6 +20,7 @@ interface MindMapProps {
 
 const MindMap: FC<MindMapProps> = ({ nodes, links }) => {
     const svgRef = useRef<SVGSVGElement | null>(null)
+    const [selectedNode, setSelectedNode] = useState<Node | null>(null)
 
     useEffect(() => {
         const svg = d3.select(svgRef.current)
@@ -48,6 +50,9 @@ const MindMap: FC<MindMapProps> = ({ nodes, links }) => {
             .append('circle')
             .attr('r', 5)
             .attr('fill', 'red')
+            .on('click', (event, d) => {
+                setSelectedNode(d)
+            })
             .call(d3.drag<SVGCircleElement, Node, SVGGElement>()
                 .on('start', dragstarted)
                 .on('drag', dragged)
@@ -99,7 +104,17 @@ const MindMap: FC<MindMapProps> = ({ nodes, links }) => {
         }
     }, [nodes, links])
 
-    return <svg ref={svgRef} width="800" height="600"></svg>
+    return (
+        <div>
+            <svg ref={svgRef} width="800" height="600"></svg>
+            {selectedNode && (
+                <div className="text-black">
+                    <h2>{selectedNode.id}</h2>
+                    <p>{selectedNode.info}</p>
+                </div>
+            )}
+        </div>
+    )
 }
 
 export default MindMap
