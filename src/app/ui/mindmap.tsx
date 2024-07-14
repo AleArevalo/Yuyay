@@ -79,7 +79,7 @@ const MindMap: FC<MindMapProps> = ({ nodes, links }) => {
             .attr('text-anchor', 'middle')
             .text(d => d.id)
             .attr('font-size', '12px')
-            .attr('fill', 'black')
+            .attr('class', 'fill-black dark:fill-white')
 
         simulation.on('tick', () => {
             link
