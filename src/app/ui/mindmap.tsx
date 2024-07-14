@@ -23,7 +23,7 @@ interface MindMapProps {
 
 const MindMap: FC<MindMapProps> = ({ nodes, links }) => {
     const svgRef = useRef<SVGSVGElement | null>(null)
-    const [ selectedNode, setSelectedNode ] = useState<Node | null>(null)
+    const [selectedNode, setSelectedNode] = useState<Node | null>(null)
 
     useEffect(() => {
         // Specify the dimensions of the chart.
@@ -32,6 +32,15 @@ const MindMap: FC<MindMapProps> = ({ nodes, links }) => {
 
         // Specify the color scale.
         const color = d3.scaleOrdinal(d3.schemeSet1)
+
+        const tooltip = d3.select('body').append('div')
+            .attr('class', 'tooltip')
+            .style('position', 'absolute')
+            .style('visibility', 'hidden')
+            .style('background', '#fff')
+            .style('padding', '5px')
+            .style('border', '1px solid #ccc')
+            .style('border-radius', '4px')
 
         const simulation = d3.forceSimulation(nodes as d3.SimulationNodeDatum[])
             .force('link', d3.forceLink(links).id((d: any) => d.id))
@@ -48,12 +57,12 @@ const MindMap: FC<MindMapProps> = ({ nodes, links }) => {
         svg.selectAll('*').remove() // Clear the svg before rendering new elements
 
         const link = svg.append('g')
-                .attr('stroke', '#999')
-                .attr('stroke-opacity', 0.6)
+            .attr('stroke', '#999')
+            .attr('stroke-opacity', 0.6)
             .selectAll('line')
             .data(links)
             .join('line')
-                .attr('stroke-width', d => Math.sqrt(d.value))
+            .attr('stroke-width', d => Math.sqrt(d.value))
 
         const node = svg.append('g')
             .attr('class', 'nodes')
@@ -66,6 +75,17 @@ const MindMap: FC<MindMapProps> = ({ nodes, links }) => {
             .attr('class', 'cursor-pointer')
             .on('click', (event, d) => {
                 setSelectedNode(d)
+            })
+            .on('mouseover', (event, d) => {
+                tooltip.html(`ID: ${d.id}<br>Info: ${d.info}`)
+                    .style('visibility', d.isMain ? 'hidden' : 'visible')
+            })
+            .on('mousemove', (event) => {
+                tooltip.style('top', (event.pageY - 10) + 'px')
+                .style('left', (event.pageX + 10) + 'px')
+            })
+            .on('mouseout', () => {
+                tooltip.style('visibility', 'hidden')
             })
             .call(d3.drag<SVGCircleElement, Node, SVGGElement>()
                 .on('start', dragstarted)
