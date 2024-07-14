@@ -1,68 +1,105 @@
 'use client'
 
+import { useRef, useEffect, FC } from 'react'
 import * as d3 from 'd3'
-import { FC, useRef, useEffect } from 'react'
 
-interface MindMapProps {
-  data: any;
+interface Node {
+    id: string;
 }
 
-const MindMap: FC<MindMapProps> = ({ data }) => {
-  const svgRef = useRef<SVGSVGElement | null>(null)
+interface Link {
+    source: string;
+    target: string;
+}
 
-  useEffect(() => {
-    const svg = d3.select(svgRef.current)
-    svg.selectAll('*').remove() // Clear the svg before rendering new elements
+interface MindMapProps {
+    nodes: Node[];
+    links: Link[];
+}
 
-    const width = 800
-    const height = 600
+const MindMap: FC<MindMapProps> = ({ nodes, links }) => {
+    const svgRef = useRef<SVGSVGElement | null>(null)
 
-    // Create the root node
-    const root = d3.hierarchy(data)
+    useEffect(() => {
+        const svg = d3.select(svgRef.current)
+        svg.selectAll('*').remove() // Clear the svg before rendering new elements
 
-    // Create a tree layout
-    const treeLayout = d3.tree().size([width, height])
+        const width = 800
+        const height = 600
 
-    // Apply the layout to the root node
-    treeLayout(root)
+        const simulation = d3.forceSimulation(nodes as d3.SimulationNodeDatum[])
+            .force('link', d3.forceLink(links).id((d: any) => d.id))
+            .force('charge', d3.forceManyBody().strength(-200))
+            .force('center', d3.forceCenter(width / 2, height / 2))
 
-    // Add links
-    svg
-      .selectAll('line')
-      .data(root.links())
-      .enter()
-      .append('line')
-      .attr('x1', d => String(d.source.x))
-      .attr('y1', d => String(d.source.y))
-      .attr('x2', d => String(d.source.x))
-      .attr('y2', d => String(d.source.y))
-      .attr('stroke', 'black')
+        const link = svg.append('g')
+            .attr('class', 'links')
+            .selectAll('line')
+            .data(links)
+            .enter()
+            .append('line')
+            .attr('stroke', 'black')
 
-    // Add nodes
-    svg
-      .selectAll('circle')
-      .data(root.descendants())
-      .enter()
-      .append('circle')
-      .attr('cx', d => String(d.x))
-      .attr('cy', d => String(d.y))
-      .attr('r', 5)
-      .attr('fill', 'red')
+        const node = svg.append('g')
+            .attr('class', 'nodes')
+            .selectAll('circle')
+            .data(nodes)
+            .enter()
+            .append('circle')
+            .attr('r', 5)
+            .attr('fill', 'red')
+            .call(d3.drag<SVGCircleElement, Node, SVGGElement>()
+                .on('start', dragstarted)
+                .on('drag', dragged)
+                .on('end', dragended))
 
-    // Add labels
-    svg
-      .selectAll('text')
-      .data(root.descendants())
-      .enter()
-      .append('text')
-      .attr('x',d => String(d.x ?? 0 + 10))
-      .attr('y', d => String(d.y))
-      .text(d => d.data.name)
-      .attr('font-size', '12px')
-      .attr('fill', 'black')
-  }, [data])
+        const label = svg.append('g')
+            .attr('class', 'labels')
+            .selectAll('text')
+            .data(nodes)
+            .enter()
+            .append('text')
+            .attr('dy', -10)
+            .attr('text-anchor', 'middle')
+            .text(d => d.id)
+            .attr('font-size', '12px')
+            .attr('fill', 'black')
 
-  return <svg ref={svgRef} width="800" height="600"></svg>
+        simulation.on('tick', () => {
+            link
+                .attr('x1', d => (d as any).source.x)
+                .attr('y1', d => (d as any).source.y)
+                .attr('x2', d => (d as any).target.x)
+                .attr('y2', d => (d as any).target.y)
+
+            node
+                .attr('cx', d => (d as any).x)
+                .attr('cy', d => (d as any).y)
+
+            label
+                .attr('x', d => (d as any).x)
+                .attr('y', d => (d as any).y)
+        })
+
+        function dragstarted(event: any, d: any) {
+            if (!event.active) simulation.alphaTarget(0.3).restart()
+            d.fx = d.x
+            d.fy = d.y
+        }
+
+        function dragged(event: any, d: any) {
+            d.fx = event.x
+            d.fy = event.y
+        }
+
+        function dragended(event: any, d: any) {
+            if (!event.active) simulation.alphaTarget(0)
+            d.fx = null
+            d.fy = null
+        }
+    }, [nodes, links])
+
+    return <svg ref={svgRef} width="800" height="600"></svg>
 }
 
 export default MindMap
