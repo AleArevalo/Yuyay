@@ -12,6 +12,7 @@ interface Node {
 interface Link {
     source: string;
     target: string;
+    value: number;
 }
 
 interface MindMapProps {
@@ -21,27 +22,37 @@ interface MindMapProps {
 
 const MindMap: FC<MindMapProps> = ({ nodes, links }) => {
     const svgRef = useRef<SVGSVGElement | null>(null)
-    const [selectedNode, setSelectedNode] = useState<Node | null>(null)
+    const [ selectedNode, setSelectedNode ] = useState<Node | null>(null)
 
     useEffect(() => {
-        const svg = d3.select(svgRef.current)
-        svg.selectAll('*').remove() // Clear the svg before rendering new elements
+        // Specify the dimensions of the chart.
+        const width = 1232
+        const height = 500
 
-        const width = 800
-        const height = 600
+        // Specify the color scale.
+        const color = d3.scaleOrdinal(d3.schemeCategory10)
 
         const simulation = d3.forceSimulation(nodes as d3.SimulationNodeDatum[])
             .force('link', d3.forceLink(links).id((d: any) => d.id))
             .force('charge', d3.forceManyBody().strength(-200))
-            .force('center', d3.forceCenter(width / 2, height / 2))
+            .force('x', d3.forceX())
+            .force('y', d3.forceY())
+
+        const svg = d3.select(svgRef.current)
+            .attr('width', width)
+            .attr('height', height)
+            .attr('viewBox', [-width / 2, -height / 2, width, height])
+            .attr('style', 'max-width: 100%; height: auto;')
+
+        svg.selectAll('*').remove() // Clear the svg before rendering new elements
 
         const link = svg.append('g')
-            .attr('class', 'links')
+                .attr('stroke', '#999')
+                .attr('stroke-opacity', 0.6)
             .selectAll('line')
             .data(links)
-            .enter()
-            .append('line')
-            .attr('stroke', 'black')
+            .join('line')
+                .attr('stroke-width', d => Math.sqrt(d.value))
 
         const node = svg.append('g')
             .attr('class', 'nodes')
@@ -60,7 +71,6 @@ const MindMap: FC<MindMapProps> = ({ nodes, links }) => {
                 .on('end', dragended))
 
         const label = svg.append('g')
-            .attr('class', 'labels')
             .selectAll('text')
             .data(nodes)
             .enter()
@@ -87,27 +97,27 @@ const MindMap: FC<MindMapProps> = ({ nodes, links }) => {
                 .attr('y', d => (d as any).y)
         })
 
-        function dragstarted(event: any, d: any) {
+        function dragstarted(event: any) {
             if (!event.active) simulation.alphaTarget(0.3).restart()
-            d.fx = d.x
-            d.fy = d.y
+            event.subject.fx = event.subject.x
+            event.subject.fy = event.subject.y
         }
 
-        function dragged(event: any, d: any) {
-            d.fx = event.x
-            d.fy = event.y
+        function dragged(event: any) {
+            event.subject.fx = event.x
+            event.subject.fy = event.y
         }
 
-        function dragended(event: any, d: any) {
+        function dragended(event: any) {
             if (!event.active) simulation.alphaTarget(0)
-            d.fx = null
-            d.fy = null
+            event.subject.fx = null
+            event.subject.fy = null
         }
     }, [nodes, links])
 
     return (
         <div>
-            <svg ref={svgRef} className="w-full h-auto min-h-[500px]"></svg>
+            <svg ref={svgRef} className="max-h-[500px]"></svg>
             {selectedNode && (
                 <div className="text-black">
                     <h2>{selectedNode.id}</h2>
