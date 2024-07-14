@@ -26,8 +26,14 @@ const MindMap: FC<MindMapProps> = ({ nodes, links }) => {
 
     useEffect(() => {
         // Specify the dimensions of the chart.
-        const width = 1232
-        const height = 500
+        let width = 1232
+        let height = 500
+
+        if (window.innerWidth < 768) {
+            // If the screen width is less than 768px, adjust the width and height of the chart.
+            width = window.innerWidth
+            height = 700
+        }
 
         // Specify the color scale.
         const color = d3.scaleOrdinal(d3.schemeSet1)
@@ -147,13 +153,7 @@ const MindMap: FC<MindMapProps> = ({ nodes, links }) => {
 
     return (
         <div>
-            <svg ref={svgRef} className="max-h-[500px]"></svg>
-            {selectedNode && (
-                <div className="text-black">
-                    <h2>{selectedNode.id}</h2>
-                    <p>{selectedNode.info}</p>
-                </div>
-            )}
+            <svg ref={svgRef} className="w-auto h-auto md:max-h-[500px]"></svg>
         </div>
     )
 }
