@@ -1,6 +1,7 @@
 'use client'
 
 import { useRef, useEffect, FC, useState } from 'react'
+
 import * as d3 from 'd3'
 
 interface Node {
@@ -106,7 +107,7 @@ const MindMap: FC<MindMapProps> = ({ nodes, links }) => {
 
     return (
         <div>
-            <svg ref={svgRef} width="800" height="600"></svg>
+            <svg ref={svgRef} className="w-full h-auto min-h-[500px]"></svg>
             {selectedNode && (
                 <div className="text-black">
                     <h2>{selectedNode.id}</h2>
