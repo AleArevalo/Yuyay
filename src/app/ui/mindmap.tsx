@@ -7,13 +7,12 @@ import * as d3 from 'd3'
 interface Node {
     id: string;
     info: string;
-    isMain: boolean;
+    registros?: string[];
 }
 
 interface Link {
     source: string;
     target: string;
-    value: number;
 }
 
 interface MindMapProps {
@@ -62,7 +61,7 @@ const MindMap: FC<MindMapProps> = ({ nodes, links }) => {
             .selectAll('line')
             .data(links)
             .join('line')
-            .attr('stroke-width', d => Math.sqrt(d.value))
+            .attr('stroke-width', 1)
 
         const node = svg.append('g')
             .attr('class', 'nodes')
@@ -71,14 +70,23 @@ const MindMap: FC<MindMapProps> = ({ nodes, links }) => {
             .enter()
             .append('circle')
             .attr('r', 5)
-            .attr('fill', d => color(d.isMain ? 'main' : 'sub'))
+            .attr('fill', d => color(d.registros ? 'main' : 'sub'))
             .attr('class', 'cursor-pointer')
             .on('click', (event, d) => {
                 setSelectedNode(d)
             })
             .on('mouseover', (event, d) => {
-                tooltip.html(`ID: ${d.id}<br>Info: ${d.info}`)
-                    .style('visibility', d.isMain ? 'hidden' : 'visible')
+                if (d.registros) {
+                    // Convertir cada registro en un elemento de lista HTML con clases de Tailwind para estilos
+                    const listaRegistros = d.registros.map(registro => `<li class="text-sm text-gray-700">${registro}</li>`).join('')
+                    // Crear la lista completa en HTML con clases de Tailwind para estilos
+                    const htmlLista = `<ul class="list-disc pl-5">${listaRegistros}</ul>`
+                    // Establecer el contenido de tooltip incluyendo la lista con estilos de Tailwind
+                    tooltip.html(`Categoría: ${d.id}<br> ${d.info}<br>${htmlLista}`)
+                        // Aplicar clases de Tailwind al tooltip para estilos adicionales
+                        .attr('class', 'p-2 bg-white shadow-lg rounded-lg text-gray-800')
+                        .style('visibility', 'visible')
+                }
             })
             .on('mousemove', (event) => {
                 tooltip.style('top', (event.pageY - 10) + 'px')
