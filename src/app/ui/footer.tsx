@@ -1,4 +1,4 @@
-export default function Footer() {
+const Footer = () => {
   return (
     <footer className="py-8">
         <div className="container mx-auto px-6 md:w-1/2">
@@ -6,7 +6,7 @@ export default function Footer() {
                 <div className="text-center">
                     <h3 className="text-indigo-600 text-xl font-bold">Yuyay</h3>
                     <p className="mt-4">
-                        Yuyay significa &quot;recordar&quot; en quechua (familia lingüística originaria de sur America) y fue creada para participar de la Hackathon de Vercel AI con el gran @midudev.
+                        Yuyay significa &quot;recordar&quot; en quechua (familia lingüística originaria de sur America) y fue creada para participar de la Hackathon de Vercel AI con el gran <a href="https://www.twitch.tv/midudev" className="text-indigo-600 hover:text-gray-400" target="_blank" rel="noopener noreferrer">@midudev</a>
                     </p>
                 </div>
                 <div className="text-center">
@@ -36,9 +36,11 @@ export default function Footer() {
                 </div>
             </div>
             <div className="mt-8 text-center">
-                Made in Chile with ❤️ - by <a href="http://alearevalo.dev" className="text-indigo-600 hover:text-gray-400" target="_blank" rel="noopener noreferrer">@alearevalo</a>
+                Made with ❤️ in Chile - by <a href="http://alearevalo.dev" className="text-indigo-600 hover:text-gray-400" target="_blank" rel="noopener noreferrer">@alearevalo</a>
             </div>
         </div>
     </footer>
   )
 }
+
+export default Footer

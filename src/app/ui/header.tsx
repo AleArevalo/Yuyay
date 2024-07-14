@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-export default function Header() {
+const Header = () => {
   return (
     <header className="container mx-auto grid md:flex justify-items-center md:justify-center items-center gap-4 md:gap-16 py-8">
       <nav className="hidden md:block">
@@ -49,3 +49,5 @@ export default function Header() {
     </header>
   )
 }
+
+export default Header
