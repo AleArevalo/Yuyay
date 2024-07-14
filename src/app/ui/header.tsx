@@ -22,7 +22,7 @@ const Header = () => {
       <nav className="hidden md:block">
         <ul className="flex gap-12">
           <li>
-            <Link href="/preview" className="text-indigo-600 hover:text-gray-400 font-medium">Preview</Link>
+            <Link href="/#preview" className="text-indigo-600 hover:text-gray-400 font-medium">Preview</Link>
           </li>
           <li>
             <Link href="/config" className="hover:text-gray-400 font-medium">Config</Link>
@@ -39,7 +39,7 @@ const Header = () => {
             <Link href="/#project" className="text-indigo-600 hover:text-gray-400 font-medium">Project</Link>
           </li>
           <li>
-            <Link href="/preview" className="hover:text-gray-400 font-medium">Preview</Link>
+            <Link href="/#preview" className="hover:text-gray-400 font-medium">Preview</Link>
           </li>
           <li>
             <Link href="/config" className="text-indigo-600 hover:text-gray-400 font-medium">Config</Link>
