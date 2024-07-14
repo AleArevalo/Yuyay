@@ -1,26 +1,26 @@
 import MindMap from './mindmap'
 
 const nodes = [
-    { id: 'Educativo', info: 'Este es el primer hijo.' },
-    { id: 'Cinematografía', info: 'Este es el segundo hijo.' },
-    { id: 'Memes', info: 'Este es el tercer hijo.' },
-    { id: 'Matemáticas', info: 'Este es el primer hijo del primer hijo.' },
-    { id: 'Literatura', info: 'Este es el segundo hijo del primer hijo.' },
-    { id: 'Películas', info: 'Este es el primer hijo del segundo hijo.' },
-    { id: 'Series', info: 'Este es el segundo hijo del segundo hijo.' },
-    { id: 'Documentales', info: 'Este es el tercer hijo del segundo hijo.' },
-    { id: 'Recuerdos', info: 'Recuerdos importantes.' },
-    { id: 'Cumpleaños', info: 'Fechas de cumpleaños.' },
-    { id: 'Oficina', info: 'Este es el cuarto hijo.' },
-    { id: 'Lista negra', info: 'Este es el cuarto hijo.' },
-    { id: 'Deportes', info: 'Este es el cuarto hijo.' },
-    { id: 'Fútbol', info: 'Este es el primer hijo del cuarto hijo.' },
-    { id: 'Baloncesto', info: 'Este es el segundo hijo del cuarto hijo.' },
-    { id: 'Tenis', info: 'Este es el tercer hijo del cuarto hijo.' },
-    { id: 'Ciencia', info: 'Este es el quinto hijo.' },
-    { id: 'Biología', info: 'Este es el primer hijo del quinto hijo.' },
-    { id: 'Química', info: 'Este es el segundo hijo del quinto hijo.' },
-    { id: 'Física', info: 'Este es el tercer hijo del quinto hijo.' }
+    { id: 'Educativo', isMain: true, info: 'Este es el primer hijo.' },
+    { id: 'Cinematografía', isMain: true, info: 'Este es el segundo hijo.' },
+    { id: 'Memes', isMain: true, info: 'Este es el tercer hijo.' },
+    { id: 'Matemáticas', isMain: false, info: 'Este es el primer hijo del primer hijo.' },
+    { id: 'Literatura', isMain: false, info: 'Este es el segundo hijo del primer hijo.' },
+    { id: 'Películas', isMain: false, info: 'Este es el primer hijo del segundo hijo.' },
+    { id: 'Series', isMain: false, info: 'Este es el segundo hijo del segundo hijo.' },
+    { id: 'Documentales', isMain: false, info: 'Este es el tercer hijo del segundo hijo.' },
+    { id: 'Recuerdos', isMain: true, info: 'Recuerdos importantes.' },
+    { id: 'Cumpleaños', isMain: false, info: 'Fechas de cumpleaños.' },
+    { id: 'Oficina', isMain: false, info: 'Este es el cuarto hijo.' },
+    { id: 'Lista negra', isMain: false, info: 'Este es el cuarto hijo.' },
+    { id: 'Deportes', isMain: true, info: 'Este es el cuarto hijo.' },
+    { id: 'Fútbol', isMain: false, info: 'Este es el primer hijo del cuarto hijo.' },
+    { id: 'Baloncesto', isMain: false, info: 'Este es el segundo hijo del cuarto hijo.' },
+    { id: 'Tenis', isMain: false, info: 'Este es el tercer hijo del cuarto hijo.' },
+    { id: 'Ciencia', isMain: true, info: 'Este es el quinto hijo.' },
+    { id: 'Biología', isMain: false, info: 'Este es el primer hijo del quinto hijo.' },
+    { id: 'Química', isMain: false, info: 'Este es el segundo hijo del quinto hijo.' },
+    { id: 'Física', isMain: false, info: 'Este es el tercer hijo del quinto hijo.' }
 ]
 
 const links = [

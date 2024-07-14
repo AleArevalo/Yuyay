@@ -7,6 +7,7 @@ import * as d3 from 'd3'
 interface Node {
     id: string;
     info: string;
+    isMain: boolean;
 }
 
 interface Link {
@@ -30,7 +31,7 @@ const MindMap: FC<MindMapProps> = ({ nodes, links }) => {
         const height = 500
 
         // Specify the color scale.
-        const color = d3.scaleOrdinal(d3.schemeCategory10)
+        const color = d3.scaleOrdinal(d3.schemeSet1)
 
         const simulation = d3.forceSimulation(nodes as d3.SimulationNodeDatum[])
             .force('link', d3.forceLink(links).id((d: any) => d.id))
@@ -61,7 +62,8 @@ const MindMap: FC<MindMapProps> = ({ nodes, links }) => {
             .enter()
             .append('circle')
             .attr('r', 5)
-            .attr('fill', 'red')
+            .attr('fill', d => color(d.isMain ? 'main' : 'sub'))
+            .attr('class', 'cursor-pointer')
             .on('click', (event, d) => {
                 setSelectedNode(d)
             })
