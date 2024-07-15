@@ -96,7 +96,7 @@ const MindMap: FC<MindMapProps> = ({ nodes, links }) => {
             })
             .on('mousemove', (event) => {
                 tooltip.style('top', (event.pageY - 10) + 'px')
-                .style('left', (event.pageX + 10) + 'px')
+                    .style('left', (event.pageX + 10) + 'px')
             })
             .on('mouseout', () => {
                 tooltip.style('visibility', 'hidden')
@@ -116,6 +116,31 @@ const MindMap: FC<MindMapProps> = ({ nodes, links }) => {
             .text(d => d.id)
             .attr('font-size', '12px')
             .attr('class', 'fill-black dark:fill-white')
+
+        const glossaryGroup = svg.append('g')
+            .attr('transform', window.innerWidth < 768 ? `translate(-30, 300)` : 'translate(500, 20)') // Ajusta las coordenadas según sea necesario
+
+        // Agregar items al glosario
+        const glossaryItems = [
+            { color: color('sub'), description: 'Concepto' },
+            { color: color('main'), description: 'Satélite' }
+        ]
+
+        glossaryItems.forEach((item, index) => {
+            glossaryGroup.append('rect')
+                .attr('x', 0)
+                .attr('y', index * 20)
+                .attr('width', 10)
+                .attr('height', 10)
+                .attr('fill', item.color)
+
+            glossaryGroup.append('text')
+                .attr('x', 15)
+                .attr('y', index * 20 + 10)
+                .attr('font-size', 12)
+                .attr('class', 'fill-black dark:fill-white')
+                .text(item.description)
+        })
 
         simulation.on('tick', () => {
             link
