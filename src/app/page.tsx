@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 import Features from './ui/features'
 import Preview from './ui/preview'
 import { IconSearch } from './ui/icons/icons'
@@ -12,7 +14,7 @@ const Home = () => {
             <UndrawThoughtProcess classList="m-auto md:hidden" width={300} height={250} />
             <div>
               <h1 className="text-4xl font-bold text-gray-500 md:text-gray-400">
-                Welcome to Yuyay
+                Bienvenido a Yuyay
               </h1>
               <p className="my-4">
                 La forma más moderna de organizar tus pensamientos con mapas mentales segmentados con IA.
@@ -32,7 +34,7 @@ const Home = () => {
               </div>
               <div className="mt-8">
                 <a href="#" className="px-4 py-2 bg-indigo-600 text-white hover:bg-indigo-700 rounded-full">Ver resultado</a>
-                <a href="#" className="px-4 py-2 bg-black dark:bg-gray-200 text-white dark:text-gray-800 hover:bg-gray-800 dark:hover:bg-gray-300 rounded-full ml-4">Empezar</a>
+                <Link href="/config" className="px-4 py-2 bg-black dark:bg-gray-200 text-white dark:text-gray-800 hover:bg-gray-800 dark:hover:bg-gray-300 rounded-full ml-4">Empezar</Link>
               </div>
             </div>
             <UndrawThoughtProcess classList="hidden md:block w-[750px] h-[350px]" />
