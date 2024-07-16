@@ -7,7 +7,7 @@ const Header = () => {
       <nav className="hidden md:block">
         <ul className="flex gap-12">
           <li>
-            <Link href="/#home" className="hover:text-gray-400 font-medium border-b-2 border-black dark:border-gray-400">Home</Link>
+            <Link href="/#home" className="hover:text-gray-400 font-medium">Home</Link>
           </li>
           <li>
             <Link href="/#project" className="text-indigo-600 hover:text-gray-400 font-medium">Project</Link>
@@ -33,7 +33,7 @@ const Header = () => {
       <nav className="md:hidden">
         <ul className="flex gap-8">
           <li>
-            <Link href="/#home" className="hover:text-gray-400 font-medium border-b-2 border-black dark:border-gray-400">Home</Link>
+            <Link href="/#home" className="hover:text-gray-400 font-medium">Home</Link>
           </li>
           <li>
             <Link href="/#project" className="text-indigo-600 hover:text-gray-400 font-medium">Project</Link>
