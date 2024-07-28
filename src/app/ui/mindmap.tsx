@@ -4,16 +4,7 @@ import { useRef, useEffect, FC, useState } from 'react'
 
 import * as d3 from 'd3'
 
-interface Node {
-    id: string;
-    info: string;
-    registros?: string[];
-}
-
-interface Link {
-    source: string;
-    target: string;
-}
+import { Node, Link } from '../interfaces/Mindmap'
 
 interface MindMapProps {
     nodes: Node[];
